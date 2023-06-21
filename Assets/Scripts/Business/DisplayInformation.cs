@@ -3,23 +3,25 @@ using TMPro;
 
 public class DisplayInformation : MonoBehaviour
 {
-    public TextMeshProUGUI shopTypeTxt;
-
+    public Sprite icon;
+    public TextMeshProUGUI shopNameTxt;
+    public TextMeshProUGUI shopCategoryTxt;
     public TextMeshProUGUI hourlyIncomeTxt;
 
     void OnEnable()
     {
-        ShopController.OnShopClicked += UpdateDisplay;
+        NewBusinessTemplate.OnShopClicked += UpdateDisplay;
     }
 
     void OnDisable()
     {
-        ShopController.OnShopClicked -= UpdateDisplay;
+        NewBusinessTemplate.OnShopClicked -= UpdateDisplay;
     }
 
-    void UpdateDisplay(string shopType, int hourlyIncome)
+    void UpdateDisplay(string shopName, string shopCategory, float hourlyIncome)
     {
-        shopTypeTxt.text = shopType;
-        hourlyIncomeTxt.text = "$ " + hourlyIncome.ToString("##.#");
+        shopNameTxt.text = shopName;
+        shopCategoryTxt.text = shopCategory;
+        hourlyIncomeTxt.text = "$ " + NumberFormatter.FormatNumsHelper.FormatNum(hourlyIncome);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BusinessStorage : MonoBehaviour
 {
-    public List<ShopController> shopStorage;
+    public List<NewBusinessTemplate> shopStorage;
     private BusinessManager _businessManager;
 
     private void Start()
@@ -15,7 +15,7 @@ public class BusinessStorage : MonoBehaviour
     private void FillBusinessList()
     {
         shopStorage.Clear();
-        ShopController[] shopControllers = _businessManager._businessStorageTransform.GetComponentsInChildren<ShopController>();
+        NewBusinessTemplate[] shopControllers = _businessManager._businessStorageTransform.GetComponentsInChildren<NewBusinessTemplate>();
         shopStorage.AddRange(shopControllers);
     }
 }

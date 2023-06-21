@@ -1,19 +1,22 @@
 using TMPro;
+using System;
 using UnityEngine;
 
-public class ShopController : MonoBehaviour
+public class NewBusinessTemplate : MonoBehaviour
 {
     public string shopName;
+    public string businessCategory;
     public ShopType shopType;
-    public int hourlyIncome;
+    public float hourlyIncome;
     
-    public static event System.Action<string, int> OnShopClicked;
+    public static event Action<string, string, float> OnShopClicked;
 
     [SerializeField] private TextMeshProUGUI shopNameTxt, shopTypeTxt, hourlyIncomeTxt;
 
-    public void SetupShop(string name, ShopType type, int price, int income)
+    public void SetupShop(string name, string category, ShopType type, int price, float income)
     {
         SetupShopName(name);
+        businessCategory = category;
         shopType = type;
         hourlyIncome = income;
         UpdateUiInformation();
@@ -32,15 +35,12 @@ public class ShopController : MonoBehaviour
     }
     public void ShopClicked()
     {
-        if (OnShopClicked != null)
-        {
-            OnShopClicked(shopType.ToString(), hourlyIncome);
-        }
+        if (OnShopClicked != null) OnShopClicked(shopName, businessCategory, hourlyIncome);
     }
     private void UpdateUiInformation()
     {
         shopNameTxt.text = shopName;
         shopTypeTxt.text = shopType.ToString();
-        hourlyIncomeTxt.text = "$ " + hourlyIncome.ToString("##.#");
+        hourlyIncomeTxt.text = "$ " + NumberFormatter.FormatNumsHelper.FormatNum(hourlyIncome) + " <size=30><color=#9A9A9A>Per click</color>";
     }
 }

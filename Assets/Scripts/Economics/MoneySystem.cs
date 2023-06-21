@@ -48,8 +48,8 @@ public class MoneySystem : MonoBehaviour
 
     private void UpdateMoneyText()
     {
-        _moneyText.text = (moneyBalance == 0) ? "0.00" : moneyBalance.ToString("##.##");
-        _hourlyIncomeText.text = (hourlyIncome == 0) ? "$ 0.00" : "$ " + hourlyIncome.ToString("##.##");
+        _moneyText.text = (moneyBalance == 0) ? "0.00" : NumberFormatter.FormatNumsHelper.FormatNum(moneyBalance);
+        _hourlyIncomeText.text = (hourlyIncome == 0) ? "$ 0.00" : "$ " + NumberFormatter.FormatNumsHelper.FormatNum(hourlyIncome);
     }
 
 }

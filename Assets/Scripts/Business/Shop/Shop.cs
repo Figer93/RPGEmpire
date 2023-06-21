@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum ShopType
@@ -15,35 +16,34 @@ public enum ShopType
 public class Shop : MonoBehaviour
 {
     public ShopType shopType;
-    
-    private string shopName;
-    
+    public string businessCategory;
     private BusinessManager _businessManager;
 
     private void Start()
     {
         _businessManager = GetComponent<BusinessManager>();
+        businessCategory = BusinessCategory.FoodIndustry.GetStringValue();
     }
 
     public void OnSetShopType(int type)
     {
         shopType = (ShopType)type;
-        ChangeShop(shopType);
+        ShopType(shopType);
     }
 
-    private void ChangeShop(ShopType shopType)
+    private void ShopType(ShopType shopType)
     {
         switch (shopType)
         {
-            case ShopType.Small:
+            case global::ShopType.Small:
                 _businessManager.openingPrice = 5000;
                 _businessManager.hourlyIncome = 1000;
                 break;
-            case ShopType.ChainOfStores:
+            case global::ShopType.ChainOfStores:
                 _businessManager.openingPrice = 15000;
                 _businessManager.hourlyIncome = 2500;
                 break;
-            case ShopType.Big:
+            case global::ShopType.Big:
                 _businessManager.openingPrice = 50000;
                 _businessManager.hourlyIncome = 7000;
                 break;

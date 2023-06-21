@@ -2,6 +2,38 @@ using System;
 using TMPro;
 using UnityEngine;
 
+public enum BusinessCategory
+{
+    [StringValue("Food industry")]
+    FoodIndustry,
+
+    [StringValue("Manufacture")]
+    Manufacture,
+
+    [StringValue("Transportation")]
+    Transportation
+}
+public static class EnumExtensions
+{
+    public static string GetStringValue(this Enum value)
+    {
+        var fieldInfo = value.GetType().GetField(value.ToString());
+        var stringValueAttribute = fieldInfo.GetCustomAttributes(typeof(StringValueAttribute), false) as StringValueAttribute[];
+
+        return stringValueAttribute.Length > 0 ? stringValueAttribute[0].Value : value.ToString();
+    }
+}
+
+public class StringValueAttribute : Attribute
+{
+    public string Value { get; }
+
+    public StringValueAttribute(string value)
+    {
+        Value = value;
+    }
+}
+
 public class BusinessManager : MonoBehaviour
 {
     public int openingPrice;
@@ -20,8 +52,12 @@ public class BusinessManager : MonoBehaviour
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private TextMeshProUGUI _costNameOpenTxt;
 
+    #region Other
+
     [SerializeField] private GameObject _image; // Information picture about creating new business(should switch off when you have any business)
-    
+
+    #endregion
+
     private void Start()
     {
         _businessStorage = GetComponent<BusinessStorage>();
@@ -74,15 +110,20 @@ public class BusinessManager : MonoBehaviour
         }
     }
 
+    public void EnableDisplayInfo()
+    {
+        _newBusinessTemplate.gameObject.SetActive(true);
+    }
+
     private void InstantiateNewBusiness()
     {
         _newBusinessTemplate = Instantiate(_businessPrefabTemplate, _businessStorageTransform);
-        _businessStorage.shopStorage.Add(_newBusinessTemplate.GetComponent<ShopController>());
+        _businessStorage.shopStorage.Add(_newBusinessTemplate.GetComponent<NewBusinessTemplate>());
     }
 
     private void SetUpNewBusiness()
     {
-        ShopController newShopController = _newBusinessTemplate.GetComponent<ShopController>();
-        newShopController.SetupShop(_businessName, _shopBusiness.shopType, openingPrice, hourlyIncome);
+        NewBusinessTemplate newNewBusinessTemplate = _newBusinessTemplate.GetComponent<NewBusinessTemplate>();
+        newNewBusinessTemplate.SetupShop(_businessName, _shopBusiness.businessCategory, _shopBusiness.shopType, openingPrice, hourlyIncome);
     }
 }

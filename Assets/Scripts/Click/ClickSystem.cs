@@ -27,7 +27,7 @@ public class ClickSystem : MonoBehaviour
 
     private void Update()
     {
-        _clickText.text = _clickPower.ToString("$ "+ _clickPower);
+        _clickText.text = "$ " + NumberFormatter.FormatNumsHelper.FormatNum(_clickPower) + " <size=40><color=#FFFFFFB9><b>Per click</b></color>";
     }
     public void Click()
     {
