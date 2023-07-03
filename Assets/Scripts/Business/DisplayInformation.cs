@@ -10,12 +10,12 @@ public class DisplayInformation : MonoBehaviour
 
     void OnEnable()
     {
-        NewBusinessTemplate.OnShopClicked += UpdateDisplay;
+        BusinessTemplate.OnBusinessClicked += UpdateDisplay;
     }
 
     void OnDisable()
     {
-        NewBusinessTemplate.OnShopClicked -= UpdateDisplay;
+        BusinessTemplate.OnBusinessClicked -= UpdateDisplay;
     }
 
     void UpdateDisplay(string shopName, string shopCategory, float hourlyIncome)

@@ -1,129 +1,56 @@
-using System;
-using TMPro;
+using System.Collections.Generic;
+using Economics;
 using UnityEngine;
 
-public enum BusinessCategory
+public class BusinessManager : MonoBehaviour, IBusinessControl
 {
-    [StringValue("Food industry")]
-    FoodIndustry,
+    private IMoneyManager _moneySystem;
+    private BusinessTemplate _newBusiness;
 
-    [StringValue("Manufacture")]
-    Manufacture,
-
-    [StringValue("Transportation")]
-    Transportation
-}
-public static class EnumExtensions
-{
-    public static string GetStringValue(this Enum value)
-    {
-        var fieldInfo = value.GetType().GetField(value.ToString());
-        var stringValueAttribute = fieldInfo.GetCustomAttributes(typeof(StringValueAttribute), false) as StringValueAttribute[];
-
-        return stringValueAttribute.Length > 0 ? stringValueAttribute[0].Value : value.ToString();
-    }
-}
-
-public class StringValueAttribute : Attribute
-{
-    public string Value { get; }
-
-    public StringValueAttribute(string value)
-    {
-        Value = value;
-    }
-}
-
-public class BusinessManager : MonoBehaviour
-{
-    public int openingPrice;
-    public int hourlyIncome;
-    
-    private GameObject _newBusinessTemplate;
-    private string _businessName;
-
-    private BusinessStorage _businessStorage;
-    private Shop _shopBusiness;
-    [SerializeField] private MoneySystem _moneySystem;
-
-    public Transform _businessStorageTransform;
-    [SerializeField] private GameObject _businessPrefabTemplate;
-
-    [SerializeField] private TMP_InputField nameInputField;
-    [SerializeField] private TextMeshProUGUI _costNameOpenTxt;
-
-    #region Other
-
-    [SerializeField] private GameObject _image; // Information picture about creating new business(should switch off when you have any business)
-
-    #endregion
+    [SerializeField] private Transform _businessStorageTransform;
+    [SerializeField] private BusinessTemplate _businessPrefabTemplate;
+    [SerializeField] private CreateNameBusiness _createNameBusiness;
 
     private void Start()
     {
-        _businessStorage = GetComponent<BusinessStorage>();
-        _shopBusiness = GetComponent<Shop>();
-        
-        IsAnyBusinessPresent();
+        _moneySystem = new MoneySystem();
     }
 
-    public void OnSetName()
+    public void InstantiateNewBusiness()
     {
-        _businessName = nameInputField.text;
+        BuyBusiness(_newBusiness.BusinessCost);
+        _newBusiness = Instantiate(_businessPrefabTemplate, _businessStorageTransform);
+        AddNewBusiness(_newBusiness);
+        SetupBusiness(_newBusiness.BusinessName, _newBusiness.HourlyIncome);
     }
 
-    public void OnBuyBusiness()
+    private void BuyBusiness(float businessCost)
     {
-        float playerBalance = _moneySystem.moneyBalance;
-        if (playerBalance >= openingPrice)
-        {
-            _moneySystem.SubtractMoney(openingPrice);
-            _moneySystem.AddHourlyIncome(hourlyIncome);
-            InstantiateNewBusiness();
-            SetUpNewBusiness();
-            IsAnyBusinessPresent();
-        }
-        else
-        {
-            Debug.Log("Not enough funds to buy the store! " + "Your current balance is: " + _moneySystem.moneyBalance);
-        }
+        _moneySystem.SubtractMoney(businessCost);
     }
 
-    public void RefreshName()
+    private void SetupBusiness(string businessName, float businessIncome)
     {
-        nameInputField.text = String.Empty;
+        _createNameBusiness.SetupShopName(businessName);
+        _moneySystem.AddHourlyIncome(businessIncome);
     }
 
-    public void UpdateOpeningPriceText()
+    public List<BusinessTemplate> BusinessesList()
     {
-        _costNameOpenTxt.text = "$ " + openingPrice.ToString("##.##");
-    }
-    
-    public void IsAnyBusinessPresent()
-    {
-        if (_businessStorage.shopStorage.Count > 0)
-        {
-            _image.SetActive(false);
-        }
-        else
-        {
-            _image.SetActive(true);
-        }
+        BusinessTemplate[] businessArray = _businessStorageTransform.GetComponentsInChildren<BusinessTemplate>();
+        List<BusinessTemplate> businessList = new List<BusinessTemplate>(businessArray);
+        return businessList;
     }
 
-    public void EnableDisplayInfo()
+    public void AddNewBusiness(BusinessTemplate business)
     {
-        _newBusinessTemplate.gameObject.SetActive(true);
+        List<BusinessTemplate> businessList = BusinessesList();
+        businessList.Add(business);
     }
 
-    private void InstantiateNewBusiness()
+    public void GetBusinessesList()
     {
-        _newBusinessTemplate = Instantiate(_businessPrefabTemplate, _businessStorageTransform);
-        _businessStorage.shopStorage.Add(_newBusinessTemplate.GetComponent<NewBusinessTemplate>());
-    }
-
-    private void SetUpNewBusiness()
-    {
-        NewBusinessTemplate newNewBusinessTemplate = _newBusinessTemplate.GetComponent<NewBusinessTemplate>();
-        newNewBusinessTemplate.SetupShop(_businessName, _shopBusiness.businessCategory, _shopBusiness.shopType, openingPrice, hourlyIncome);
+        List<BusinessTemplate> businessList = BusinessesList();
+        Debug.Log($"You have {businessList.Count} businesses");
     }
 }

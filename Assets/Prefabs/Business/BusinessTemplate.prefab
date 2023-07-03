@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 9072262024177790171}
   - component: {fileID: 9072262024177790170}
   - component: {fileID: -1434703972386773700}
+  - component: {fileID: -5431010499380289840}
   - component: {fileID: 6160153286667105462}
   m_Layer: 5
   m_Name: BusinessTemplate
@@ -672,9 +673,21 @@ MonoBehaviour:
   businessCategory: 0
   shopType: 0
   hourlyIncome: 0
-  shopNameTxt: {fileID: 9072262022880329328}
-  shopTypeTxt: {fileID: 9072262024206550449}
-  hourlyIncomeTxt: {fileID: 9072262023392110738}
+--- !u!114 &-5431010499380289840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072262024177790172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac722366120207e45994789fe54f4774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shopNameTxt: {fileID: 9072262022880329328}
+  _shopTypeTxt: {fileID: 9072262024206550449}
+  _hourlyIncomeTxt: {fileID: 9072262023392110738}
 --- !u!114 &6160153286667105462
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4382,9 +4382,9 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 627421212}
-          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-          m_MethodName: OnSetShopType
-          m_Mode: 3
+          m_TargetAssemblyTypeName: ShopBusiness, Assembly-CSharp
+          m_MethodName: OnChooseShopType
+          m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4595,8 +4595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d31dbba9a019d4b96a9ddf20831a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopType: 0
-  businessCategory: 
 --- !u!114 &627421213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4622,14 +4620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eac29bc993c6724eba574869c3fc1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingPrice: 0
-  hourlyIncome: 0
-  _moneySystem: {fileID: 750926142}
   _businessStorageTransform: {fileID: 1093811812}
-  _businessPrefabTemplate: {fileID: 9072262024177790172, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
-  nameInputField: {fileID: 700239385}
-  _costNameOpenTxt: {fileID: 1786451109}
-  _image: {fileID: 1395682492}
+  _businessPrefabTemplate: {fileID: -1434703972386773700, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
+  _createNameBusiness: {fileID: 627421215}
 --- !u!114 &627421215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4637,23 +4630,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627421207}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 41187a70f79ff8d4a846c4d88961d2c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 968, y: 242}
-  m_Spacing: {x: 0, y: 30}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  _nameInputField: {fileID: 700239385}
+  storeName: 
 --- !u!1 &627469073
 GameObject:
   m_ObjectHideFlags: 0
@@ -4801,6 +4784,7 @@ GameObject:
   - component: {fileID: 653556007}
   - component: {fileID: 653556006}
   - component: {fileID: 653556005}
+  - component: {fileID: 653556008}
   m_Layer: 5
   m_Name: OpenButton
   m_TagString: Untagged
@@ -4885,30 +4869,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 627421214}
-        m_TargetAssemblyTypeName: BusinessManager, Assembly-CSharp
-        m_MethodName: OnSetName
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 627421214}
-        m_TargetAssemblyTypeName: BusinessManager, Assembly-CSharp
-        m_MethodName: OnBuyBusiness
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &653556006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4947,6 +4907,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653556003}
   m_CullTransparentMesh: 1
+--- !u!114 &653556008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653556003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f10a599871128144bb63e7b87ae626a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _businessManager: {fileID: 627421214}
 --- !u!1 &700239383
 GameObject:
   m_ObjectHideFlags: 0
@@ -5762,7 +5735,6 @@ GameObject:
   m_Component:
   - component: {fileID: 750926144}
   - component: {fileID: 750926143}
-  - component: {fileID: 750926142}
   m_Layer: 0
   m_Name: EventObject
   m_TagString: Untagged
@@ -5770,22 +5742,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &750926142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750926141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 921390006934b334e9c2e5e2323dde18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyBalance: 40034.12
-  _moneyText: {fileID: 1375861865}
-  _hourlyIncomeText: {fileID: 1875268151}
-  hourlyIncome: 0
 --- !u!114 &750926143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9120,13 +9076,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d0c4f15277bb749b95f2fb9c93451d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopName: Hello
-  businessCategory: 
+  BusinessName: 
+  BusinessCategory: 
+  BusinessCost: 0
+  HourlyIncome: 0
   shopType: 1
-  hourlyIncome: 2500
-  shopNameTxt: {fileID: 874265499}
-  shopTypeTxt: {fileID: 2116904583}
-  hourlyIncomeTxt: {fileID: 284029425}
 --- !u!114 &1303467841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10174,7 +10128,6 @@ MonoBehaviour:
   _clickPower: 1
   _clickText: {fileID: 1354893845}
   _levelSystem: {fileID: 750926143}
-  _moneySystem: {fileID: 750926142}
 --- !u!114 &1428689680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15442,6 +15395,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1093811812}
     m_Modifications:
+    - target: {fileID: -1434703972386773700, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
+      propertyPath: shopName
+      value: None
+      objectReference: {fileID: 0}
+    - target: {fileID: -1434703972386773700, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
+      propertyPath: shopType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1434703972386773700, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
+      propertyPath: businessCategory
+      value: None
+      objectReference: {fileID: 0}
     - target: {fileID: 417309867227475208, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -15456,7 +15421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790172, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_Pivot.x
@@ -15476,7 +15441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_AnchorMin.x
@@ -15484,15 +15449,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 968
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15524,11 +15489,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 540.50006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -121
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9072262024177790173, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

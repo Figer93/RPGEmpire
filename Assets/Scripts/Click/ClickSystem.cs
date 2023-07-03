@@ -1,3 +1,4 @@
+using Economics;
 using TMPro;
 using UnityEngine;
 
@@ -11,10 +12,12 @@ public class ClickSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _clickText;
     
     [SerializeField] private LevelSystem _levelSystem;
-    [SerializeField] private MoneySystem _moneySystem;
+    
+    private MoneySystem _moneySystem;
 
     void Start()
     {
+        _moneySystem = new MoneySystem();
         if (instance == null)
         {
             instance = this;
@@ -31,7 +34,7 @@ public class ClickSystem : MonoBehaviour
     }
     public void Click()
     {
-        _moneySystem.moneyBalance += _clickPower;
+        _moneySystem.MoneyBalance += _clickPower;
         float clickValue = _levelSystem.levelMultiplier * _clickPower;
         _levelSystem.levelExpirience += clickValue;
     }

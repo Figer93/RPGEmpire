@@ -21,19 +21,33 @@
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Business" t="Include">
+            <e p="BusinessEnum" t="Include">
+              <e p="BusinessCategoryEnum.cs" t="Include" />
+              <e p="BusinessCategoryParser.cs" t="Include" />
+            </e>
             <e p="BusinessManager.cs" t="Include" />
+            <e p="BusinessStorage.cs" t="Include" />
+            <e p="BusinessTemplate.cs" t="Include" />
+            <e p="CreateNameBusiness.cs" t="Include" />
             <e p="DisplayInformation.cs" t="Include" />
+            <e p="IBusinessControl.cs" t="Include" />
             <e p="Shop" t="Include">
-              <e p="BusinessStorage.cs" t="Include" />
-              <e p="CreateNameStore.cs" t="Include" />
-              <e p="NewBusinessTemplate.cs" t="Include" />
-              <e p="Shop.cs" t="Include" />
+              <e p="ShopBusiness.cs" t="Include" />
+              <e p="ShopTypeEnum.cs" t="Include" />
+              <e p="UI" t="Include" />
+            </e>
+            <e p="UI" t="Include">
+              <e p="BusinessTemplateUI.cs" t="Include" />
+              <e p="CreateBusinessButton.cs" t="Include" />
             </e>
           </e>
           <e p="Click" t="Include">
             <e p="ClickSystem.cs" t="Include" />
           </e>
           <e p="Economics" t="Include">
+            <e p="Interfaces" t="Include">
+              <e p="IMoneyManager.cs" t="Include" />
+            </e>
             <e p="MoneySystem.cs" t="Include" />
           </e>
           <e p="LevelSystem" t="Include">
@@ -41,9 +55,6 @@
           </e>
           <e p="NumberHelper" t="Include">
             <e p="NumberFormatter.cs" t="Include" />
-          </e>
-          <e p="Time" t="Include">
-            <e p="CheckCurrentTime.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">
