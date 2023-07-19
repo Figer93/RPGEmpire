@@ -45,6 +45,7 @@
             <e p="ClickSystem.cs" t="Include" />
           </e>
           <e p="Economics" t="Include">
+            <e p="BusinessEconomic.cs" t="Include" />
             <e p="Interfaces" t="Include">
               <e p="IMoneyManager.cs" t="Include" />
             </e>

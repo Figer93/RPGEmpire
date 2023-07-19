@@ -1,9 +1,9 @@
+using System;
 using UnityEngine;
 
 public class ShopBusiness : MonoBehaviour
 {
-    private float _openingPrice;
-    private float _hourlyIncome;
+    public float OpeningPrice, HourlyIncome;
     private BusinessCategoryEnum.BusinessCategory _businessCategory;
     private ShopTypeEnum.ShopType _shopType;
 
@@ -23,16 +23,16 @@ public class ShopBusiness : MonoBehaviour
         switch (shopType)
         {
             case ShopTypeEnum.ShopType.Small:
-                _openingPrice = 5000;
-                _hourlyIncome = 1000;
+                OpeningPrice = 5000;
+                HourlyIncome = 1000;
                 break;
             case ShopTypeEnum.ShopType.ChainOfStores:
-                _openingPrice = 15000;
-                _hourlyIncome = 2500;
+                OpeningPrice = 15000;
+                HourlyIncome = 2500;
                 break;
             case ShopTypeEnum.ShopType.Big:
-                _openingPrice = 50000;
-                _hourlyIncome = 7000;
+                OpeningPrice = 50000;
+                HourlyIncome = 7000;
                 break;
         } 
     }

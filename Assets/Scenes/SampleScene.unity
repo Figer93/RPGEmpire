@@ -1863,7 +1863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &337553844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3153,8 +3153,8 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 627421212}
-          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-          m_MethodName: OnSetShopType
+          m_TargetAssemblyTypeName: ShopBusiness, Assembly-CSharp
+          m_MethodName: OnChooseShopType
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4384,7 +4384,7 @@ MonoBehaviour:
         - m_Target: {fileID: 627421212}
           m_TargetAssemblyTypeName: ShopBusiness, Assembly-CSharp
           m_MethodName: OnChooseShopType
-          m_Mode: 4
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4595,6 +4595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d31dbba9a019d4b96a9ddf20831a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OpeningPrice: 0
+  HourlyIncome: 0
 --- !u!114 &627421213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4623,6 +4625,7 @@ MonoBehaviour:
   _businessStorageTransform: {fileID: 1093811812}
   _businessPrefabTemplate: {fileID: -1434703972386773700, guid: ddd8c3d535dd7034ebad588ba883c46f, type: 3}
   _createNameBusiness: {fileID: 627421215}
+  _shopBusiness: {fileID: 627421212}
 --- !u!114 &627421215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11577,8 +11580,8 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 627421212}
-          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-          m_MethodName: OnSetShopType
+          m_TargetAssemblyTypeName: ShopBusiness, Assembly-CSharp
+          m_MethodName: OnChooseShopType
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

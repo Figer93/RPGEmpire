@@ -10,23 +10,24 @@ public class BusinessManager : MonoBehaviour, IBusinessControl
     [SerializeField] private Transform _businessStorageTransform;
     [SerializeField] private BusinessTemplate _businessPrefabTemplate;
     [SerializeField] private CreateNameBusiness _createNameBusiness;
+    [SerializeField] private ShopBusiness _shopBusiness;
 
     private void Start()
     {
         _moneySystem = new MoneySystem();
     }
-
-    public void InstantiateNewBusiness()
+    
+    public void BuyBusiness()
     {
-        BuyBusiness(_newBusiness.BusinessCost);
-        _newBusiness = Instantiate(_businessPrefabTemplate, _businessStorageTransform);
-        AddNewBusiness(_newBusiness);
+        _moneySystem.SubtractMoney(_shopBusiness.OpeningPrice);
+        InstantiateNewBusiness();
         SetupBusiness(_newBusiness.BusinessName, _newBusiness.HourlyIncome);
+        AddNewBusiness(_newBusiness);
     }
 
-    private void BuyBusiness(float businessCost)
+    private void InstantiateNewBusiness()
     {
-        _moneySystem.SubtractMoney(businessCost);
+        _newBusiness = Instantiate(_businessPrefabTemplate, _businessStorageTransform);
     }
 
     private void SetupBusiness(string businessName, float businessIncome)

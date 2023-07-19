@@ -14,6 +14,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Business/UI/CreateBusinessButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Business/Shop/ShopTypeEnum.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Business/IBusinessControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Economics/BusinessEconomic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Business/UI/BusinessTemplateUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/N.Fridman/FormatNums/Scripts/Helpers/FormatNumsHelper.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -45,14 +46,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/BusinessStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Shop/ChooseShopType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/IBusinessSetup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/BusinessTemplate.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Economics/Interfaces/IMoneyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Economics/MoneySystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/UI/CreateBusinessUI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/BusinessManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/UI/CreateBusinessButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/CreateNameBusiness.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/BusinessTemplate.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Economics/BusinessPrices.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Economics/BusinessEconomic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/UI/CreateBusinessButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Shop/ShopBusiness.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/BusinessManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Economics/MoneySystem.cs" />
       </list>
     </option>
   </component>
@@ -107,7 +110,9 @@
       <workItem from="1688212612600" duration="1234000" />
       <workItem from="1688316555379" duration="7409000" />
       <workItem from="1688332934359" duration="8471000" />
-      <workItem from="1688384617074" duration="3789000" />
+      <workItem from="1688384617074" duration="4256000" />
+      <workItem from="1688495727875" duration="3364000" />
+      <workItem from="1688576859419" duration="2625000" />
     </task>
     <servers />
   </component>

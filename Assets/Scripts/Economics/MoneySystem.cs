@@ -5,7 +5,7 @@ namespace Economics
 {
     public class MoneySystem : IMoneyManager
     {
-        public float MoneyBalance { get; set; } = 10000;
+        public float MoneyBalance = 10000;
 
         //private TextMeshProUGUI _moneyText;
         //private TextMeshProUGUI _hourlyIncomeText;
@@ -22,14 +22,6 @@ namespace Economics
                 int incomeToAdd = Mathf.RoundToInt(hourlyIncome * (_timeInterval / 3600f));
                 AddMoney(incomeToAdd);
                 _elapsedTime = 0f;
-            }
-        }
-        public void BuyBusiness()
-        {
-            //if (MoneyBalance >= openingPrice)
-            {
-                //SubtractMoney(openingPrice);
-                AddHourlyIncome(hourlyIncome);
             }
         }
 

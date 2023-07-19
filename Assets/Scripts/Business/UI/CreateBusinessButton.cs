@@ -9,6 +9,6 @@ public class CreateBusinessButton : MonoBehaviour
     void Start()
     {
         _buyBusinessButton = GetComponent<Button>();
-        _buyBusinessButton.onClick.AddListener(_businessManager.InstantiateNewBusiness); 
+        _buyBusinessButton.onClick.AddListener(_businessManager.BuyBusiness); 
     }
 }
